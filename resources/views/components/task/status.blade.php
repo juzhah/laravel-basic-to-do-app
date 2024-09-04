@@ -29,7 +29,7 @@
     @if (Arr::has($tasks, 'completed'))
         <div class="mt-5 h-3/4 overflow-scroll">
             @foreach ($tasks['completed'] as $task)
-                <x-task.task-card :task="$task"></x-task.task-card>
+                <x-task.task-card :task="$task" :completed="true" ></x-task.task-card>
             @endforeach
         </div>
     @else

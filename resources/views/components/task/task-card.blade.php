@@ -1,13 +1,13 @@
-<div class="block px-4 py-6 border border-gray-200 rounded-lg mb-2">
+<div class="block px-4 py-6 border border-gray-400 rounded-lg mb-2">
     <div class="flex justify-between content-center">
         <div>
-            <p class="font-bold">{{ $task->name }}</p>
+            <p class="{{($task->status === 'completed') ? 'text-gray-400 line-through': 'font-bold'}}">{{ $task->name }}</p>
             @if (isset($task->content))
-                <p>{{$task->content}}</p>
+                <p class="">{{$task->content}}</p>
             @endif
         </div>
         <a href="/edit/{{ $task->id }}" class="">
-            <svg class="w-5 stroke-current stroke-2 text-gray-500" viewBox="0 0 24 24" fill="none"
+            <svg class="w-5 stroke-current stroke-2 text-gray-400" viewBox="0 0 24 24" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
