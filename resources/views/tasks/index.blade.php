@@ -3,7 +3,7 @@
       Tasks-App
     </x-slot:header>
 
-    <div class="flex justify-between gap-5 overflow-hidden">
+    <div class="flex justify-between gap-5 h-screen overflow-hidden">
       <x-task.status :tasks='$tasks'>
       </x-task.status>
     </div>

@@ -11,7 +11,7 @@ class Task extends Model
 
     protected $guarded = [];
 
-    public function tags(){
-        return $this->belongsToMany(Tag::class, foreignPivotKey:'tasks_id');
-    }
+/*     public function tags(){
+        return $this->hasMany(Label::class);
+    } */
 }

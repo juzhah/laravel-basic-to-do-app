@@ -39,6 +39,22 @@
                         </div>
                     </div>
 
+                    <div class="sm:col-span-3">
+                      <label for="label" class="block text-sm font-medium leading-6 text-gray-900">label</label>
+                      <div class="mt-2">
+                          <select id="label" name="label" autocomplete="label-name"
+                              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                              <option>not urgent</option>
+                              <option>important</option>
+                              <option>urgent</option>
+                              <option>none</option>
+                          </select>
+                          @error('label')
+                              <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
+                          @enderror
+                      </div>
+                  </div>
+
                 </div>
                 <div class="mt-10">
                     @if ($errors->any())

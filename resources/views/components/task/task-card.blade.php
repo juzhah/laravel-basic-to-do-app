@@ -1,9 +1,10 @@
-<div class="block px-4 py-6 border border-gray-400 rounded-lg mb-2">
+<div class="block px-4 py-4 border border-gray-400 rounded-lg mb-2">
     <div class="flex justify-between content-center">
         <div>
-            <p class="{{($task->status === 'completed') ? 'text-gray-400 line-through': 'font-bold'}}">{{ $task->name }}</p>
+            <p class="{{ $task->status === 'completed' ? 'text-gray-400 line-through' : 'font-bold' }}">
+                {{ $task->name }}</p>
             @if (isset($task->content))
-                <p class="">{{$task->content}}</p>
+                <p class="">{{ $task->content }}</p>
             @endif
         </div>
         <a href="/edit/{{ $task->id }}" class="">
@@ -22,5 +23,7 @@
             </svg>
         </a>
     </div>
-
+    @if (isset($task->label))
+        <x-label :taskLabel="$task->label">{{$task->label}}</x-label>
+    @endif
 </div>

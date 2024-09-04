@@ -1,60 +1,13 @@
 <?php
 
-use App\Models\Task;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    $tasks = Task::orderBy('created_at', 'desc')->get()->groupBy('status');
-    return view('dashboard', [
-        'tasks' => $tasks
-    ]);
-});
-
-Route::get('/create', function () {
-    return view('tasks.create');
-});
-
-Route::post('/create', function () {
-    request()->validate(
-        [
-            'name' => ['required', 'min:6'],
-            'status' => ['required']
-        ]
-    );
-
-    Task::create([
-        'name' => request('name'),
-        'content' => request('content'),
-        'status' => request('status')
-    ]);
-
-    return redirect('/');
-});
-
-Route::get('/edit/{task}', function (Task $task) {
-    return view('tasks.edit', [
-        'task' => $task
-    ]);
-});
-
-Route::patch('/edit/{task}', function (Task $task) {
-    request()->validate(
-        [
-            'name' => ['required', 'min:6'],
-            'status' => ['required']
-        ]
-    );
-
-    $task->update([
-        'name' => request('name'),
-        'content' => request('content'),
-        'status' => request('status')
-    ]);
-
-    return redirect('/');
-});
-
-Route::delete('/delete/{task}', function (Task $task) {
-    $task->delete();
-    return redirect('/');
+Route::controller(TaskController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/edit/{task}', 'show');
+    Route::get('/create', 'create');
+    Route::post('/create', 'store');
+    Route::patch('/edit/{task}', 'edit');
+    Route::delete('/delete/{task}', 'destroy');
 });

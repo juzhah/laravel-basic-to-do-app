@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Task>
@@ -18,7 +19,8 @@ class TaskFactory extends Factory
     {
         return [
             'name' => "This is a Task!",
-            'status' => "to-do"
+            'status' =>  Arr::random(['to-do', 'doing', 'completed']),
+            'label' => Arr::random(['not urgent', 'important', 'urgent'])
         ];
     }
 }
