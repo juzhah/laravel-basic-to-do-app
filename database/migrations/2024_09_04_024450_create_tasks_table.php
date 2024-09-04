@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('label')->default('none');
             $table->timestamps();
+            
         });
     }
 
